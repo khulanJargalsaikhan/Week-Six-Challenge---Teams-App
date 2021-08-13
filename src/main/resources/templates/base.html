@@ -24,7 +24,7 @@
                         <a class="nav-link" th:href="@{/allPlayers}">Players</a>
                     </li>
                     <li class="nav-item">
-                        <a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/addTeam}">Add team</a>
+                        <a sec:authorize="hasAuthority('ROLE_ADMIN')" class="nav-link" th:href="@{/addTeam}">Add team</a>
                     </li>
                     <li class="nav-item">
                         <a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/addPlayer}">Add player</a>
