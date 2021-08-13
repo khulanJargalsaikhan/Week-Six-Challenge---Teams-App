@@ -10,21 +10,26 @@
 <!--nav bar from base.html-->
 <div th:replace="base :: navlinks"></div>
 
+<div class="container col-lg-10">
+    <div th:each="team : ${teams}">
+        <div>
+            <h5 th:inline="text">Team name: [[${team.name}]]</h5>
+            <h5 th:inline="text">City: [[${team.city}]] </h5>
+        </div>
 
-<h1>Secure Page</h1>
-<h4>Name: </h4>
-<p>[[${user.firstName}]] [[${user.lastName}]]</p>
-<br>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <h5>Team Players:</h5>
+            <div th:each="player : ${team.players}" class="card" style="width: 18rem;">
+                <img th:src="${player.photo}" width="200" height="200" class="card-img-top" alt="player-photo">
+                <div class="card-body">
+                    <h5 th:inline="text" class="card-title">[[${player.fname}]] [[${player.lname}]]</h5>
+                    <a th:href="@{/profile/{id}(id=${player.id})}" class="btn btn-primary">See profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<h4>Email: </h4>
-<p th:text="${user.email}"></p>
-
-
-
-
-
-
-
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"

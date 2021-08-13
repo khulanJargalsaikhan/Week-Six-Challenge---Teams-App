@@ -7,34 +7,24 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
+<!--nav bar from base.html-->
+<div th:replace="base :: navlinks"></div>
 
-<h1>Login Page</h1>
+<div class="container col-lg-6">
+    <h1>Login Page</h1>
 
-<div th:if="${param.error}">Invalid username or password</div>
+    <div th:if="${param.error}">Invalid username or password</div>
 
-<div th:if="${param.logout}">You have been successfully logged out</div>
+    <div th:if="${param.logout}">You have been successfully logged out</div>
 
-<form th:action="@{/login}" method="post">
-    <div><label>Username: <input type="text" name="username" /> </label></div>
-    <div><label>Password: <input type="password" name="password" /> </label></div>
+    <form th:action="@{/login}" method="post">
+        <div><label>Username: <input type="text" name="username" /> </label></div>
+        <div><label>Password: <input type="password" name="password" /> </label></div>
 
-    <div><input type="submit" value="Sign in" /> </div>
-</form>
-
-
-
-
-
-
-
-
-<div class="container">
-    <div class="row">
-        <div class="col">
-
-        </div>
-    </div>
+        <div><input type="submit" value="Sign in" /> </div>
+    </form>
 </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"

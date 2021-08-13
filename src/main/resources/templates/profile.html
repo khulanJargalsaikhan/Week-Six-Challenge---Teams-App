@@ -10,21 +10,25 @@
 <!--nav bar from base.html-->
 <div th:replace="base :: navlinks"></div>
 
+<div class="container col-lg-10">
 
-<h1>Secure Page</h1>
-<h4>Name: </h4>
-<p>[[${user.firstName}]] [[${user.lastName}]]</p>
-<br>
+    <div th:each="player : ${players}" class="card" style="width: 18rem;">
+        <img th:src="${player.photo}" width="200" height="200" class="card-img-top" alt="player-photo">
+        <div class="card-body">
+            <p th:inline="text" class="card-title"><b>First name: </b> [[${player.fname}]] </p>
+            <p th:inline="text" class="card-title"><b>Last name: </b> [[${player.lname}]] </p>
+            <p th:inline="text" class="card-title"><b>Age: </b> [[${player.age}]] </p>
+            <p th:inline="text" class="card-title"><b>Team: </b> [[${player.team.name}]] </p>
+            <a th:href="@{/updatePlayer/{id}(id=${player.id})}" class="btn btn-primary">Update</a>
+            <a th:href="@{/deletePlayer/{id}(id=${player.id})}" class="btn btn-primary">Delete</a>
+        </div>
+    </div>
 
-<h4>Email: </h4>
-<p th:text="${user.email}"></p>
 
 
 
 
-
-
-
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"

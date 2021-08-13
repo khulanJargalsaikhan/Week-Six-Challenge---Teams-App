@@ -1,26 +1,30 @@
-# String Boot - Basic Security
+# Week Six Challenge - Teams
+
+Montgomery County is proud to announce it's new {sports} (you choose which) league for all children, and it's decided to hire you as it's full-stack developer! They want to create a website to display their current teams and each of the players in those teams.
+They already have 3 teams (the Cicadas, The Blue Crabs and the Woodpeckers), each with 2 members.
+They want everyone who visits their website to be able to see the team names and a button leading to their team Page.
+The Team Page should display all team information, including Player names per team. Logged-in users/admin should also be able to see a button leading to each child's profile page, where their first name, last name, age, picture and team are displayed.
+
+Each team should have at least:
+
+- Name
+- City
+- Players
+
+Only an admin, with the credentials username "admin", password "admin" (make sure you include these credentials) can register/update/delete a Team. Only an authenticated user (or an admin) can add in a new child and needs to provide a first name, last name, age, picture and the team the child will participate in. Include buttons for these pages (/addPlayer, /updateTeam, etc.) in your pages (preferably the navbar).
+
+There should be a consistent navbar across all pages (Home page, team page, player page).
 
 
-EXERCISE 4.01
--------------
-Create an application that uses basic security with JDBC 
-Authentication. Check that you can only see the login page 
-if you haven’t logged in and that you can then visit any page once you have logged in.
 
-EXERCISE 4.02
--------------
-Create an application that uses a custom login form with the title, My Login Form.
+Done?
 
-EXERCISE 4.03
--------------
-Create an application with 3 pages: a course page, a teacher page and a student page. 
-Also create 3 users: one with ADMIN role, one with USER role and one with both. 
-Finally, set the permissions on your security so that only people 
-with the admin role can see the teacher page and only people 
-with the user role can see the student page.
+- Allow admins to update players.
+- Add photos to each team
+- Feeling good? --> Allow only the users who registered players (or the admin) to update players.
+- Add a search bar so other kids can find their friends and see which team they belong to
 
-4.04 USING DATABASE-BASED AUTHENTICATION
-----------------------------------------
 
-- Implementing database-based permission with customized User and Role table
-- Implementing Logout functionality
+
+Feeling super good ?
+- How would you implement "trading" players from 1 team to the other? What about games between teams ? 

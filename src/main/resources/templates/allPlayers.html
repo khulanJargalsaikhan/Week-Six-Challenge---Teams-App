@@ -11,42 +11,24 @@
 <div th:replace="base :: navlinks"></div>
 
 <div class="container col-lg-10">
-    <p>Logged-in user: <span sec:authentication="name"> </span></p>
+    <h2>Players</h2>
 
-    <h2 th:if="${message}">[[${message}]]</h2>
-
-    <div th:each="team : ${teams}" class="col align-self-start">
-        <div>
-            <h2 th:inline="text">Team: [[${team.name}]], [[${team.city}]] </h2>
-            <p><a th:href="@{/team/{id}(id=${team.id})}">Go to Team Page</a></p>
-        </div>
-
-        <div class="row row-cols-1 row-cols-md-2 g-4">
-            <p>Players: </p>
-            <div th:each="player : ${team.players}" class="card" style="width: 18rem;">
-                <img th:src="${player.photo}" width="200" height="200" class="card-img-top" alt="player-photo">
+    <div class="row row-cols-2 row-cols-md-4 g-4">
+        <div th:each="player : ${players}" class="card-deck">
+            <div class="card">
+                <img th:src="${player.photo}" width="200" height="200" class="card-img-top" src="..." alt="Card image cap">
                 <div class="card-body">
-                    <h5 th:inline="text" class="card-title">[[${player.fname}]] [[${player.lname}]]</h5>
+                    <h5 class="card-title">[[${player.fname}]] [[${player.lname}]]</h5>
                     <a sec:authorize="isAuthenticated()" th:href="@{/profile/{id}(id=${player.id})}" class="btn btn-primary">See profile</a>
+                </div>
+                <div class="card-footer">
+                    <p class="card-text">Team: [[${player.team.name}]]</p>
                 </div>
             </div>
         </div>
     </div>
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
