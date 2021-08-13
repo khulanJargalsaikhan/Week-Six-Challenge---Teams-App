@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org">
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -13,6 +13,10 @@
 <div class="container col-lg-10">
     <div th:each="team : ${teams}">
         <div>
+            <div>
+                <a sec:authorize="hasAuthority('ROLE_ADMIN')" th:href="@{/updateTeam/{id}(id=${team.id})}" class="btn btn-primary">Update</a>
+                <a sec:authorize="hasAuthority('ROLE_ADMIN')" th:href="@{/deleteTeam/{id}(id=${team.id})}" class="btn btn-primary">Delete</a>
+            </div>
             <h5 th:inline="text">Team name: [[${team.name}]]</h5>
             <h5 th:inline="text">City: [[${team.city}]] </h5>
         </div>
@@ -23,7 +27,7 @@
                 <img th:src="${player.photo}" width="200" height="200" class="card-img-top" alt="player-photo">
                 <div class="card-body">
                     <h5 th:inline="text" class="card-title">[[${player.fname}]] [[${player.lname}]]</h5>
-                    <a th:href="@{/profile/{id}(id=${player.id})}" class="btn btn-primary">See profile</a>
+                    <a sec:authorize="isAuthenticated()" th:href="@{/profile/{id}(id=${player.id})}" class="btn btn-primary">See profile</a>
                 </div>
             </div>
         </div>
